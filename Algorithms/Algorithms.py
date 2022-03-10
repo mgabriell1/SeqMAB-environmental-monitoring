@@ -187,7 +187,7 @@ def SEQGPUCBSW_delta(slidingWindow, maxValue, samplingTimes, dataset, day, hour,
 
 #%% Seq(GP-UCB-CD)
 
-def SEQGPUCBCD_max(trainingWindow, ARL0, explPerc, CP, maxValue, samplingTimes, dataset, day, hour, plot):
+def SEQGPUCBCD_max(ARL0, explPerc, CP, maxValue, samplingTimes, dataset, day, hour, plot):
     
     ## GP details
     xmax = max(samplingTimes) 
@@ -268,7 +268,7 @@ def SEQGPUCBCD_max(trainingWindow, ARL0, explPerc, CP, maxValue, samplingTimes, 
     return nextSamplingTime, max_est_conc, max_est_hour
 
 
-def SEQGPUCBCD_delta(trainingWindow, ARL0, explPerc, CP, maxValue, samplingTimes, dataset, day, hour, plot):
+def SEQGPUCBCD_delta(ARL0, explPerc, CP, maxValue, samplingTimes, dataset, day, hour, plot):
     
     ## GP details
     xmax = max(samplingTimes) 

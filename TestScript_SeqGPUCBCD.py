@@ -24,7 +24,7 @@ samplingDuration = 180
 samplingTimes = np.arange(24, step = 1,dtype = float) # All possible sampling times. Here for example sampling is possible every round hour
 data = pd.DataFrame(columns=['Day', 'sampledTime', 'Concentration']) # Dataframe to store sampled concentrations
 nextSamplingTime = 12 # First sampling time. Can be selected randomly
-targetValue = "delta" # Possible values "max" or "delta" 
+targetValue = "max" # Possible values "max" or "delta" 
 
 ### Algorithm details
 plot = True # Plot fitted results or not
@@ -75,9 +75,9 @@ for i in range(samplingDuration):
             
             # Select new sampling time
             if targetValue == "max":
-            	nextSamplingTime, max_est_conc, max_est_loc  = SEQGPUCBCD_max(trainingWindow, ARL0, explPerc, detectedCP, maxValue, samplingTimes, data, i, j, plot)
+            	nextSamplingTime, max_est_conc, max_est_loc  = SEQGPUCBCD_max(ARL0, explPerc, detectedCP, maxValue, samplingTimes, data, i, j, plot)
             if targetValue == "delta":
-            	nextSamplingTime, max_est_conc, max_est_loc, min_est_conc, min_est_loc = SEQGPUCBCD_delta(trainingWindow, ARL0, explPerc, detectedCP, maxValue, samplingTimes, data, i, j, plot)
+            	nextSamplingTime, max_est_conc, max_est_loc, min_est_conc, min_est_loc = SEQGPUCBCD_delta(ARL0, explPerc, detectedCP, maxValue, samplingTimes, data, i, j, plot)
             
     # After the pattern is characterized (at the end of the training window) variations in the daily maximum value are monitored
     if i - detectedCP >= trainingWindow:
